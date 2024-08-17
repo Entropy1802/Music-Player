@@ -1,0 +1,399 @@
+const playlistSongs = document.getElementById("playlist-songs");
+const previousButton = document.getElementById("previous");
+const playButton = document.getElementById("play");
+const pauseButton = document.getElementById("pause");
+const nextButton = document.getElementById("next");
+const shuffleButton = document.getElementById("shuffle");
+const replayButton = document.getElementById("replay");
+const repeatButton = document.getElementById("repeat");
+
+const showVolume = document.getElementById("show-volume");
+const volumeIcon = document.getElementById("volume-icon");
+const muteIcon = document.getElementById("mute-icon");
+const currentVolume = document.getElementById("volume");
+
+const progressBar = document.getElementById("songProgess");
+const currentTimeDisplay = document.getElementsByClassName("currentTime");
+const durationDisplay = document.getElementById("songDuration");
+
+const allSongs = [
+  {
+    id: 0,
+    title: "In the Years to Come, I Wish You Peace",
+    artist: "Linh",
+    duration: "4:48",
+    src: "resources/Năm Tháng Sau Này, Mong Người Bình Yên - Linh.mp3",
+  },
+  {
+    id: 1,
+    title: "Divorce in the Republic of Ghana",
+    artist: "ZB ft YK",
+    duration: "4:33",
+    src: "resources/Ly Hôn Ở Cộng Hòa Ghana - Trương Bích Thần (Zhang Bi Chen), Dương Khôn (Yang Kun).mp3",
+  },
+  {
+    id: 2,
+    title: "Colorless Happiness",
+    artist: "Khiem",
+    duration: "3:25",
+    src: "resources/Hạnh Phúc Không Sắc - Khiem.mp3",
+  },
+  {
+    id: 3,
+    title: "Cannot Give Up on You",
+    artist: "Khiem",
+    duration: "4:17",
+    src: "resources/Chẳng Thể Từ Bỏ - Khiem.mp3",
+  },
+  {
+    id: 4,
+    title: "A World Without Pain",
+    artist: "Khiem",
+    duration: "4:19",
+    src: "resources/Thế Giới Không Còn Niềm Đau - Khiem.mp3",
+  },
+  {
+    id: 5,
+    title: "The Other Half is Loneliness",
+    artist: "Khiem",
+    duration: "1:00",
+    src: "resources/Demo Nửa kia là quạnh hiu-Khiem.mp3",
+  },
+  {
+    id: 6,
+    title: "I Just Need You To Know",
+    artist: "Dani D",
+    duration: "3:23",
+    src: "resources/Chỉ Cần Em Biết - Dani D.mp3",
+  },
+  {
+    id: 7,
+    title: "Let You Go",
+    artist: "Aioz",
+    duration: "3:30",
+    src: "resources/Let You Go-Aioz.mp3",
+  },
+  {
+    id: 8,
+    title: "Wish You All the Best",
+    artist: "Aioz",
+    duration: "3:00",
+    src: "resources/Wish You All the Best-Aioz.mp3",
+  },
+  {
+    id: 9,
+    title: "If One Day I Forget Your Name",
+    artist: "Khiem",
+    duration: "2:46",
+    src: "resources/Lỡ Một Mai Tôi Quên Tên Người - Khiem.mp3",
+  },
+  {
+    id: 10,
+    title: "Lily of the Valley",
+    artist: "Daniel",
+    duration: "5:00",
+    src: "resources/Lily of the Valley - Daniel.mp3",
+  },
+  {
+    id: 11,
+    title: "Hidden in the Snow",
+    artist: "YD ft DDP",
+    duration: "3:32",
+    src: "resources/Tuyêt tang - Y-D, Ngai Ngai Pha.mp3",
+  },
+  {
+    id: 12,
+    title: "Maybe",
+    artist: "LBI",
+    duration: "3:38",
+    src: "resources/Có lẽ - LBI Lợi Bỉ .mp3",
+  },
+  {
+    id: 13,
+    title: "Eternal Sleep",
+    artist: "Khiem",
+    duration: "3:19",
+    src: "resources/Khiem - Giấc Ngủ Dài Hạn.mp3",
+  },
+];
+
+const audio = new Audio(); // Creates and returns a new HTMLAudioElement object, optionally starting the process of loading an audio file into it if the file URL is given
+audio.volume = 15 / 100;
+
+let userData = {
+  songs: [...allSongs],
+  currentSong: null,
+  songCurrentTime: 0,
+};
+
+const renderSongs = (array) => {
+  const songsHTML = array
+    .map((song) => {
+      return `<li id="song-${song.id}" class="playlist-song">
+    <button class="playlist-song-info">
+      <span class="playlist-song-title" onclick="playSong(${song.id})">${song.title}</span>
+      <span class="playlist-song-artist">${song.artist}</span>
+      <span class="playlist-song-duration">${song.duration}</span>
+    </button>
+
+    <button class="playlist-song-delete" aria-label="Delete ${song.title}" onclick="deleteSong(${song.id})"><i class="fa-regular fa-trash-can"></i></button>
+    </li>`;
+    })
+    .join("");
+  playlistSongs.innerHTML = songsHTML;
+};
+
+const sortSongs = () => {
+  userData?.songs.sort((a, b) => {
+    if (a.title < b.title) {
+      return -1;
+    }
+    if (a.title > b.title) {
+      return 1;
+    }
+    return 0;
+  });
+  return userData?.songs;
+};
+renderSongs(sortSongs());
+
+const setPlayButtonAccessibleText = () => {
+  const song = userData?.currentSong || userData?.songs[0];
+  playButton.setAttribute("aria-label", song?.title ? `Play ${song.title}` : "Play");
+};
+
+/*------- VOLUME ADJUSTMENT -------*/
+const muteSound = () => {
+  audio.volume = 0;
+  showVolume.innerHTML = 0;
+  currentVolume.value = 0;
+  volumeIcon.style.display = "none";
+  muteIcon.style.display = "block";
+};
+
+const changeVolume = () => {
+  showVolume.innerHTML = currentVolume.value;
+  audio.volume = currentVolume.value / 100;
+  volumeIcon.style.display = "block";
+  muteIcon.style.display = "none";
+
+  if (currentVolume.value == 0) {
+    volumeIcon.style.display = "none";
+    muteIcon.style.display = "block";
+  }
+};
+
+volumeIcon.addEventListener("click", muteSound);
+currentVolume.addEventListener("change", changeVolume);
+
+/*------- FUNCTIONS -------*/
+// PLAY
+const playSong = (id) => {
+  const song = userData?.songs.find((song) => song.id === id);
+  audio.src = song.src;
+  audio.title = song.title;
+
+  if (userData?.currentSong === null || userData?.currentSong.id !== song.id) {
+    audio.currentTime = 0;
+  } else {
+    audio.currentTime = userData?.songCurrentTime;
+  }
+
+  userData.currentSong = song;
+
+  highlightCurrentSong();
+  setPlayButtonAccessibleText();
+  setPlayerDisplay();
+  audio.play();
+
+  playButton.style.display = "none";
+  pauseButton.style.display = "block";
+  repeatButton.style.display = "block";
+};
+
+// PAUSE
+const pauseSong = () => {
+  userData.songCurrentTime = audio.currentTime;
+  audio.pause();
+};
+
+// REPLAY
+const replaySong = () => {
+  playSong(userData.currentSong.id);
+  replayButton.style.display = "none";
+  pauseButton.style.display = "block";
+};
+
+// PLAY NEXT SONG
+const getCurrentSongIndex = () => {
+  return userData?.songs.indexOf(userData?.currentSong);
+};
+
+const playNextSong = () => {
+  if (userData?.currentSong === null) {
+    playSong(userData?.songs[0].id);
+  } else {
+    const currentSongIndex = getCurrentSongIndex();
+    const nextSong = userData?.songs[currentSongIndex + 1];
+    playSong(nextSong.id);
+  }
+};
+
+// PLAY PREVIOUS SONG
+const playPreviousSong = () => {
+  if (userData?.currentSong === null) {
+    return;
+  } else {
+    const currentSongIndex = getCurrentSongIndex();
+    const previousSong = userData?.songs[currentSongIndex - 1];
+    playSong(previousSong.id);
+  }
+};
+
+// SHUFFLE
+const shuffle = () => {
+  userData?.songs.sort(() => {
+    return Math.random() - 0.5;
+  });
+  userData.currentSong = null;
+  userData.songCurrentTime = 0;
+
+  renderSongs(userData?.songs);
+  setPlayerDisplay();
+  setPlayButtonAccessibleText();
+
+  if (userData?.currentSong === null) {
+    playSong(userData?.songs[0].id);
+  }
+  audio.addEventListener("ended", playNextSong);
+};
+
+// DISPLAY SONG
+const setPlayerDisplay = () => {
+  const playingSong = document.getElementById("player-song-title");
+  const songArtist = document.getElementById("player-song-artist");
+  const currentTitle = userData?.currentSong?.title;
+  const currentArtist = userData?.currentSong?.artist;
+
+  playingSong.textContent = currentTitle ? currentTitle : "";
+  songArtist.textContent = currentArtist ? currentArtist : "";
+};
+
+const highlightCurrentSong = () => {
+  const playlistSongElements = document.querySelectorAll(".playlist-song");
+  const songToHighlight = document.getElementById(`song-${userData?.currentSong?.id}`);
+
+  playlistSongElements.forEach((songEl) => {
+    songEl.removeAttribute("aria-current");
+  });
+
+  if (songToHighlight) {
+    songToHighlight.setAttribute("aria-current", "true");
+  }
+};
+
+// ADJUST SONG'S PROGRESS
+const formatTime = (seconds) => {
+  const minute = Math.floor(seconds / 60);
+  const secondsRemaining = Math.floor(seconds % 60);
+  return `${minute}:${secondsRemaining < 10 ? "0" : ""}${secondsRemaining}`;
+};
+
+const updateProgressBar = () => {
+  const currentTime = audio.currentTime;
+  const duration = audio.duration;
+  const progressPercentage = (currentTime / duration) * 100;
+
+  progressBar.value = progressPercentage;
+  currentTimeDisplay.textContent = formatTime(currentTime);
+};
+
+const setAudioProgress = () => {
+  const progress = progressBar.value;
+  const duration = audio.duration;
+  audio.currentTime = (progress / 100) * duration;
+};
+
+// DELETE SONG
+const deleteSong = (id) => {
+  if (userData?.currentSong?.id === id) {
+    userData.currentSong = null;
+    userData.songCurrentTime = 0;
+
+    pauseSong();
+    setPlayerDisplay();
+  }
+
+  userData.songs = userData?.songs.filter((song) => song.id !== id);
+  renderSongs(userData?.songs);
+  highlightCurrentSong();
+  setPlayButtonAccessibleText();
+
+  if (userData?.songs.length === 0) {
+    const resetButton = document.createElement("button");
+    const resetText = document.createTextNode("Reset Playlist");
+
+    resetButton.id = "reset";
+    resetButton.ariaLabel = "Reset playlist";
+
+    resetButton.appendChild(resetText);
+    playlistSongs.appendChild(resetButton);
+
+    resetButton.addEventListener("click", () => {
+      userData.songs = [...allSongs];
+      renderSongs(sortSongs());
+      setPlayButtonAccessibleText();
+      resetButton.remove();
+    });
+  }
+};
+
+/*------- BUTTONS -------*/
+// When the song is end
+audio.addEventListener("ended", () => {
+  pauseButton.style.display = "none";
+  replayButton.style.display = "block";
+});
+
+playButton.addEventListener("click", () => {
+  if (!userData?.currentSong) {
+    playSong(userData?.songs[0].id);
+  } else {
+    playSong(userData?.currentSong.id);
+  }
+  playButton.style.display = "none";
+  pauseButton.style.display = "block";
+});
+
+pauseButton.addEventListener("click", () => {
+  pauseSong();
+  pauseButton.style.display = "none";
+  playButton.style.display = "block";
+});
+
+replayButton.addEventListener("click", replaySong);
+
+nextButton.addEventListener("click", playNextSong);
+
+previousButton.addEventListener("click", playPreviousSong);
+
+shuffleButton.addEventListener("click", shuffle);
+
+audio.addEventListener("loadedmetadata", () => {
+  durationDisplay.textContent = formatTime(audio.duration);
+});
+audio.addEventListener("timeupdate", updateProgressBar);
+progressBar.addEventListener("input", setAudioProgress);
+progressBar.addEventListener("change", setAudioProgress);
+
+let isRepeating = false;
+repeatButton.addEventListener("click", () => {
+  isRepeating = !isRepeating;
+  if (isRepeating) {
+    audio.loop = true;
+    repeatButton.style.backgroundColor = "green";
+  } else {
+    audio.loop = false;
+    repeatButton.style.backgroundColor = "orange";
+  }
+});
