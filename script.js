@@ -5,7 +5,8 @@ const pauseButton = document.getElementById("pause");
 const nextButton = document.getElementById("next");
 const shuffleButton = document.getElementById("shuffle");
 const replayButton = document.getElementById("replay");
-const repeatButton = document.getElementById("repeat");
+const repeatButton = document.getElementById("repeat-0");
+const startRepeatButton = document.getElementById("repeat-1");
 
 const showVolume = document.getElementById("show-volume");
 const volumeIcon = document.getElementById("volume-icon");
@@ -115,6 +116,13 @@ const allSongs = [
     duration: "3:19",
     src: "resources/Khiem - Giấc Ngủ Dài Hạn.mp3",
   },
+  {
+    id: 14,
+    title: "Keep",
+    artist: "An LouXian",
+    duration: "4:14",
+    src: "resources/Giữ - An Lạc Hiền.mp3",
+  },
 ];
 
 const audio = new Audio(); // Creates and returns a new HTMLAudioElement object, optionally starting the process of loading an audio file into it if the file URL is given
@@ -208,7 +216,6 @@ const playSong = (id) => {
 
   playButton.style.display = "none";
   pauseButton.style.display = "block";
-  repeatButton.style.display = "block";
 };
 
 // PAUSE
@@ -216,6 +223,19 @@ const pauseSong = () => {
   userData.songCurrentTime = audio.currentTime;
   audio.pause();
 };
+
+// REPEAT
+repeatButton.addEventListener("click", () => {
+  audio.loop = true;
+  repeatButton.style.display = "none";
+  startRepeatButton.style.display = "block";
+});
+
+startRepeatButton.addEventListener("click", () => {
+  audio.loop = false;
+  startRepeatButton.style.display = "none";
+  repeatButton.style.display = "block";
+});
 
 // REPLAY
 const replaySong = () => {
@@ -385,15 +405,3 @@ audio.addEventListener("loadedmetadata", () => {
 audio.addEventListener("timeupdate", updateProgressBar);
 progressBar.addEventListener("input", setAudioProgress);
 progressBar.addEventListener("change", setAudioProgress);
-
-let isRepeating = false;
-repeatButton.addEventListener("click", () => {
-  isRepeating = !isRepeating;
-  if (isRepeating) {
-    audio.loop = true;
-    repeatButton.style.backgroundColor = "green";
-  } else {
-    audio.loop = false;
-    repeatButton.style.backgroundColor = "orange";
-  }
-});

@@ -104,6 +104,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 35px;
 }
 .volume {
   display: flex;
@@ -114,18 +115,25 @@ h2 {
   font-size: "Solway";
   width: 40px;
   text-align: left;
-  color: #ffffff;
+  color: #fff;
   margin-right: 8px;
 }
-.top-button i {
+.top-button .volume i {
   font-size: 30px;
-  color: #ffffff;
+  color: #fff;
 }
 input#volume {
-  accent-color: #ffffff;
+  accent-color: #fff;
   margin-left: 15px;
 }
 #mute-icon {
+  display: none;
+}
+button.repeat {
+  color: #fff;
+  font-size: 35px;
+}
+i#repeat-1 {
   display: none;
 }
 .player-display-song-artist {
@@ -173,7 +181,7 @@ input#progressBar {
 }
 .player-buttons i {
   font-size: 35px;
-  color: #ffffff;
+  color: #fff;
 }
 button {
   border: none;
@@ -181,7 +189,6 @@ button {
   cursor: pointer;
 }
 #pause,
-#repeat,
 #replay {
   display: none;
 }
@@ -251,7 +258,7 @@ ul {
 }
 [aria-current="true"] span,
 [aria-current="true"] i {
-  color: #ffffff;
+  color: #fff;
 }
 .playlist-song-delete:hover,
 .playlist-song-delete:focus {
