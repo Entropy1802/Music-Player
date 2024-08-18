@@ -160,17 +160,17 @@ i#repeat-1 {
   font-weight: 600;
   color: #fff;
 }
-#songProgress {
+#progressBar {
   display: flex;
   align-items: center;
   column-gap: 15px;
   margin-bottom: 12px;
 }
-#songProgress span {
+#progressBar span {
   color: #fff;
   font-size: 20px;
 }
-input#progressBar {
+input#songProgess {
   accent-color: #fff;
   width: 100%;
 }
@@ -188,8 +188,7 @@ button {
   background-color: transparent;
   cursor: pointer;
 }
-#pause,
-#replay {
+#pause {
   display: none;
 }
 ul {
@@ -266,19 +265,16 @@ ul {
 }
 
 /*------- RESPONSIVE WEB PAGE -------*/
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 400px) {
   .player,
   .playlist {
-    width: 500px;
+    width: 340px;
   }
   .player {
     height: auto;
   }
-  .player-bar,
-  .playlist-bar,
-  .player-content,
   #playlist-songs {
-    width: 450px;
+    width: 100%;
   }
   .player-content {
     background-color: transparent;
@@ -326,9 +322,6 @@ ul {
     scrollbar-color: #3f3f3f white;
     scrollbar-width: thin;
   }
-  li {
-    font-size: 20px;
-  }
   #playlist-songs::-webkit-scrollbar {
     width: 100%;
   }
@@ -348,13 +341,25 @@ ul {
   h2 {
     font-size: 24px;
   }
-
+  .playlist-song-info {
+    justify-content: space-between;
+    column-gap: 0;
+  }
+  .playlist-song-title,
+  .playlist-song-artist,
+  .playlist-song-duration {
+    font-size: 14px;
+  }
   .playlist-song-title {
-    width: 180px;
-    margin-right: 20px;
+    width: 100px;
+    border: 2px solid green;
   }
   .playlist-song-artist {
-    width: 80px;
+    width: 50px;
+    border: 2px solid green;
+  }
+  .playlist-song-delete i {
+    font-size: 16px;
   }
   .playlist-song-duration > button {
     padding: 0;

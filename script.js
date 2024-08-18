@@ -4,7 +4,6 @@ const playButton = document.getElementById("play");
 const pauseButton = document.getElementById("pause");
 const nextButton = document.getElementById("next");
 const shuffleButton = document.getElementById("shuffle");
-const replayButton = document.getElementById("replay");
 const repeatButton = document.getElementById("repeat-0");
 const startRepeatButton = document.getElementById("repeat-1");
 
@@ -14,7 +13,7 @@ const muteIcon = document.getElementById("mute-icon");
 const currentVolume = document.getElementById("volume");
 
 const progressBar = document.getElementById("songProgess");
-const currentTimeDisplay = document.getElementsByClassName("currentTime");
+const currentTimeDisplay = document.getElementById("currentTime");
 const durationDisplay = document.getElementById("songDuration");
 
 const allSongs = [
@@ -170,17 +169,17 @@ const setPlayButtonAccessibleText = () => {
   playButton.setAttribute("aria-label", song?.title ? `Play ${song.title}` : "Play");
 };
 
-/*------- VOLUME ADJUSTMENT -------*/
+// Voume Adjustment
 const muteSound = () => {
   audio.volume = 0;
-  showVolume.innerHTML = 0;
+  showVolume.textContent = 0;
   currentVolume.value = 0;
   volumeIcon.style.display = "none";
   muteIcon.style.display = "block";
 };
 
 const changeVolume = () => {
-  showVolume.innerHTML = currentVolume.value;
+  showVolume.textContent = currentVolume.value;
   audio.volume = currentVolume.value / 100;
   volumeIcon.style.display = "block";
   muteIcon.style.display = "none";
@@ -195,7 +194,7 @@ volumeIcon.addEventListener("click", muteSound);
 currentVolume.addEventListener("change", changeVolume);
 
 /*------- FUNCTIONS -------*/
-// PLAY
+// Play
 const playSong = (id) => {
   const song = userData?.songs.find((song) => song.id === id);
   audio.src = song.src;
@@ -218,59 +217,7 @@ const playSong = (id) => {
   pauseButton.style.display = "block";
 };
 
-// PAUSE
-const pauseSong = () => {
-  userData.songCurrentTime = audio.currentTime;
-  audio.pause();
-};
-
-// REPEAT
-repeatButton.addEventListener("click", () => {
-  audio.loop = true;
-  repeatButton.style.display = "none";
-  startRepeatButton.style.display = "block";
-});
-
-startRepeatButton.addEventListener("click", () => {
-  audio.loop = false;
-  startRepeatButton.style.display = "none";
-  repeatButton.style.display = "block";
-});
-
-// REPLAY
-const replaySong = () => {
-  playSong(userData.currentSong.id);
-  replayButton.style.display = "none";
-  pauseButton.style.display = "block";
-};
-
-// PLAY NEXT SONG
-const getCurrentSongIndex = () => {
-  return userData?.songs.indexOf(userData?.currentSong);
-};
-
-const playNextSong = () => {
-  if (userData?.currentSong === null) {
-    playSong(userData?.songs[0].id);
-  } else {
-    const currentSongIndex = getCurrentSongIndex();
-    const nextSong = userData?.songs[currentSongIndex + 1];
-    playSong(nextSong.id);
-  }
-};
-
-// PLAY PREVIOUS SONG
-const playPreviousSong = () => {
-  if (userData?.currentSong === null) {
-    return;
-  } else {
-    const currentSongIndex = getCurrentSongIndex();
-    const previousSong = userData?.songs[currentSongIndex - 1];
-    playSong(previousSong.id);
-  }
-};
-
-// SHUFFLE
+// Shuffle Playlist
 const shuffle = () => {
   userData?.songs.sort(() => {
     return Math.random() - 0.5;
@@ -285,10 +232,92 @@ const shuffle = () => {
   if (userData?.currentSong === null) {
     playSong(userData?.songs[0].id);
   }
-  audio.addEventListener("ended", playNextSong);
 };
 
-// DISPLAY SONG
+// Auto Play When Song Ends
+audio.addEventListener("ended", () => {
+  const currentSongIndex = getCurrentSongIndex();
+  const nextSongExists = userData?.songs[currentSongIndex + 1] !== undefined;
+  if (nextSongExists) {
+    playNextSong();
+  } else {
+    userData.currentSong = null;
+    userData.songCurrentTime = 0;
+    pauseSong();
+    setPlayerDisplay();
+    highlightCurrentSong();
+    setPlayButtonAccessibleText();
+  }
+});
+
+// Adjust Song's Progress
+const formatTime = (seconds) => {
+  const minute = Math.floor(seconds / 60);
+  const secondsRemaining = Math.floor(seconds % 60);
+  return `${minute}:${secondsRemaining < 10 ? "0" : ""}${secondsRemaining}`;
+};
+
+const updateProgressBar = () => {
+  const currentTime = audio.currentTime;
+  const duration = audio.duration;
+  const progressPercentage = (currentTime / duration) * 100;
+
+  progressBar.value = progressPercentage;
+  currentTimeDisplay.textContent = formatTime(currentTime);
+};
+
+const setAudioProgress = () => {
+  const progress = progressBar.value;
+  const duration = audio.duration;
+  audio.currentTime = (progress / 100) * duration;
+};
+
+// Pause
+const pauseSong = () => {
+  userData.songCurrentTime = audio.currentTime;
+  audio.pause();
+};
+
+// Repeat
+repeatButton.addEventListener("click", () => {
+  audio.loop = true;
+  repeatButton.style.display = "none";
+  startRepeatButton.style.display = "block";
+});
+
+startRepeatButton.addEventListener("click", () => {
+  audio.loop = false;
+  startRepeatButton.style.display = "none";
+  repeatButton.style.display = "block";
+});
+
+// Next Song
+const getCurrentSongIndex = () => {
+  return userData?.songs.indexOf(userData?.currentSong);
+};
+
+const playNextSong = () => {
+  if (userData?.currentSong === null) {
+    playSong(userData?.songs[0].id);
+  } else {
+    const currentSongIndex = getCurrentSongIndex();
+    const nextSong = userData?.songs[currentSongIndex + 1];
+    playSong(nextSong.id);
+  }
+};
+
+// Previous Song
+const playPreviousSong = () => {
+  if (userData?.currentSong === null) {
+    return;
+  } else {
+    const currentSongIndex = getCurrentSongIndex();
+    const previousSong = userData?.songs[currentSongIndex - 1];
+    playSong(previousSong.id);
+  }
+};
+
+// Song's Display
 const setPlayerDisplay = () => {
   const playingSong = document.getElementById("player-song-title");
   const songArtist = document.getElementById("player-song-artist");
@@ -312,29 +341,7 @@ const highlightCurrentSong = () => {
   }
 };
 
-// ADJUST SONG'S PROGRESS
-const formatTime = (seconds) => {
-  const minute = Math.floor(seconds / 60);
-  const secondsRemaining = Math.floor(seconds % 60);
-  return `${minute}:${secondsRemaining < 10 ? "0" : ""}${secondsRemaining}`;
-};
-
-const updateProgressBar = () => {
-  const currentTime = audio.currentTime;
-  const duration = audio.duration;
-  const progressPercentage = (currentTime / duration) * 100;
-
-  progressBar.value = progressPercentage;
-  currentTimeDisplay.textContent = formatTime(currentTime);
-};
-
-const setAudioProgress = () => {
-  const progress = progressBar.value;
-  const duration = audio.duration;
-  audio.currentTime = (progress / 100) * duration;
-};
-
-// DELETE SONG
+// Delete Song
 const deleteSong = (id) => {
   if (userData?.currentSong?.id === id) {
     userData.currentSong = null;
@@ -369,12 +376,7 @@ const deleteSong = (id) => {
 };
 
 /*------- BUTTONS -------*/
-// When the song is end
-audio.addEventListener("ended", () => {
-  pauseButton.style.display = "none";
-  replayButton.style.display = "block";
-});
-
+// Play Button
 playButton.addEventListener("click", () => {
   if (!userData?.currentSong) {
     playSong(userData?.songs[0].id);
@@ -385,23 +387,26 @@ playButton.addEventListener("click", () => {
   pauseButton.style.display = "block";
 });
 
-pauseButton.addEventListener("click", () => {
-  pauseSong();
-  pauseButton.style.display = "none";
-  playButton.style.display = "block";
-});
-
-replayButton.addEventListener("click", replaySong);
-
-nextButton.addEventListener("click", playNextSong);
-
-previousButton.addEventListener("click", playPreviousSong);
-
-shuffleButton.addEventListener("click", shuffle);
-
+// Adjust Song's Progress Bar
 audio.addEventListener("loadedmetadata", () => {
   durationDisplay.textContent = formatTime(audio.duration);
 });
 audio.addEventListener("timeupdate", updateProgressBar);
 progressBar.addEventListener("input", setAudioProgress);
 progressBar.addEventListener("change", setAudioProgress);
+
+// Pause Button
+pauseButton.addEventListener("click", () => {
+  pauseSong();
+  pauseButton.style.display = "none";
+  playButton.style.display = "block";
+});
+
+// Next Button
+nextButton.addEventListener("click", playNextSong);
+
+// Previous Button
+previousButton.addEventListener("click", playPreviousSong);
+
+// Shuffle Button
+shuffleButton.addEventListener("click", shuffle);
