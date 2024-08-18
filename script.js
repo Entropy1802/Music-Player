@@ -12,7 +12,7 @@ const volumeIcon = document.getElementById("volume-icon");
 const muteIcon = document.getElementById("mute-icon");
 const currentVolume = document.getElementById("volume");
 
-const progressBar = document.getElementById("songProgess");
+const progressBar = document.getElementById("songProgress");
 const currentTimeDisplay = document.getElementById("currentTime");
 const durationDisplay = document.getElementById("songDuration");
 
@@ -346,9 +346,13 @@ const deleteSong = (id) => {
   if (userData?.currentSong?.id === id) {
     userData.currentSong = null;
     userData.songCurrentTime = 0;
+    audio.currentTime = 0;
 
     pauseSong();
     setPlayerDisplay();
+
+    pauseButton.style.display = "none";
+    playButton.style.display = "block";
   }
 
   userData.songs = userData?.songs.filter((song) => song.id !== id);
@@ -393,7 +397,6 @@ audio.addEventListener("loadedmetadata", () => {
 });
 audio.addEventListener("timeupdate", updateProgressBar);
 progressBar.addEventListener("input", setAudioProgress);
-progressBar.addEventListener("change", setAudioProgress);
 
 // Pause Button
 pauseButton.addEventListener("click", () => {
