@@ -160,17 +160,17 @@ i#repeat-1 {
   font-weight: 600;
   color: #fff;
 }
-#progressBar {
+.song-track {
   display: flex;
   align-items: center;
   column-gap: 15px;
   margin-bottom: 12px;
 }
-#progressBar span {
+.song-track span {
   color: #fff;
   font-size: 20px;
 }
-input#songProgess {
+input#songProgress {
   accent-color: #fff;
   width: 100%;
 }
@@ -262,6 +262,14 @@ ul {
 .playlist-song-delete:hover,
 .playlist-song-delete:focus {
   color: #dc0a57;
+}
+button#reset {
+  font-size: 18px;
+  width: 150px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #b2b2b2;
 }
 
 /*------- RESPONSIVE WEB PAGE -------*/
