@@ -18,18 +18,29 @@
 }
 body {
   background-color: #4e4e4e;
-  background-repeat: no-repeat;
-  background-size: cover;
   font-family: "Solway";
 }
-h1 {
-  font-size: 38px;
-}
-h2 {
-  font-size: 28px;
+.nav-top {
+  background-color: #a7a7a78a;
+  height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .container {
-  margin: 30px;
+  display: flex;
+}
+.container .left-sidebar {
+  background-color: #a7a7a78a;
+  width: 80px;
+  height: 500px;
+  position: sticky;
+  top: 80px;
+  left: 0;
+  z-index: 90;
+}
+.container .main-content {
+  margin: 100px 20px 20px 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,6 +67,12 @@ h2 {
   flex-direction: column;
   align-items: center;
   row-gap: 15px;
+}
+h1 {
+  font-size: 38px;
+}
+h2 {
+  font-size: 28px;
 }
 .player-title,
 .playlist-title {
@@ -131,13 +148,7 @@ input#volume {
 #mute-icon {
   display: none;
 }
-button.repeat {
-  color: #fff;
-  font-size: 35px;
-}
-i#repeat-1 {
-  display: none;
-}
+
 .player-display-song-artist {
   display: flex;
   flex-direction: column;
@@ -195,9 +206,19 @@ button {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: #676767;
+  background-color: #a7a7a7;
+}
+.play i,
+.pause i {
+  color: darkgreen;
 }
 #pause {
+  display: none;
+}
+button.repeat {
+  color: #fff;
+}
+i#repeat-1 {
   display: none;
 }
 ul {
