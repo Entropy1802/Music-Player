@@ -2,7 +2,7 @@
 
 :root {
   --nav-color: rgb(0, 0, 0, 0.7);
-  --bg-color: linear-gradient(312deg, rgba(1, 19, 27, 1) 0%, rgba(9, 92, 121, 1) 0%, rgba(1, 25, 45, 1) 100%);
+  --bg-color: linear-gradient(312deg, rgba(1, 19, 27, 0.7) 0%, rgba(9, 92, 121, 0.7) 0%, rgba(1, 25, 45, 1) 100%);
   --foreground-color: rgb(225, 225, 225);
 }
 
@@ -14,8 +14,19 @@
   box-sizing: border-box;
 }
 body {
-  background-color: #4e4e4e;
+  background-image: url("img/peakpx.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   font-family: "Saira";
+}
+h1 {
+  font-size: 40px;
+}
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 .nav-top {
   background-color: var(--nav-color);
@@ -42,37 +53,29 @@ body {
   margin: 30px;
 }
 .player-content {
+  margin: 0 auto;
   width: 900px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 40px;
   border-radius: 12px;
-  background-color: var(--foreground-color);
+  background-color: #f6f6f61b;
 }
-h1 {
-  font-size: 38px;
-}
-h2 {
-  font-size: 28px;
-}
-.player-title,
-.playlist-title {
-  margin: 0 10px;
-  color: rgb(24, 0, 0);
-  font-family: "Acme";
-}
-.player-bar,
-.playlist-bar {
-  background-color: var(--foreground-color);
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  height: 50px;
+.playlist-content {
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  width: fit-content;
+  background-color: transparent;
 }
 
+h2.playlist-title {
+  font-size: 38px;
+  color: #fff;
+  font-family: "Play";
+  text-align: center;
+}
 #player-album-art {
   margin-right: 30px;
 }
@@ -81,9 +84,9 @@ h2 {
   height: 250px;
   display: block;
   border-radius: 50%;
+  box-shadow: 15px 0px 30px #c7c7c7;
 }
 .player-display {
-  background-image: var(--bg-color);
   display: flex;
   flex-direction: column;
   row-gap: 10px;
@@ -122,7 +125,6 @@ input#volume {
 #mute-icon {
   display: none;
 }
-
 .player-display-song-artist {
   display: flex;
   flex-direction: column;
@@ -165,15 +167,19 @@ input#songProgress {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 2px solid rgb(19, 182, 155);
+}
+.player-buttons button {
+  border: 2px solid rgb(255, 255, 255);
+}
+.player-buttons button:hover {
+  background-color: #a7a7a752;
+  padding: 8px 14px;
+  border-radius: 10px;
 }
 .player-buttons i {
   font-size: 35px;
   color: #fff;
-}
-button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
 }
 .play,
 .pause {
@@ -203,13 +209,15 @@ ul {
   height: 700px;
   overflow-y: scroll;
   width: 660px;
-  background-color: var(--foreground-color);
   display: flex;
   flex-direction: column;
   row-gap: 10px;
   justify-content: flex-start;
   visibility: visible;
   padding: 20px;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 10px;
 }
 .playlist-song {
   outline-color: darkorange;
@@ -248,12 +256,12 @@ ul {
 .playlist-song-delete i {
   font-size: 25px;
 }
-.playlist li:not([aria-current="true"]):hover {
+#playlist-songs li:not([aria-current="true"]):hover {
   background-color: #bebebe;
   border-radius: 6px;
 }
 [aria-current="true"] {
-  background-color: #5f5f5f;
+  background-color: #757474;
   border-radius: 6px;
 }
 [aria-current="true"] {
@@ -261,7 +269,7 @@ ul {
 }
 [aria-current="true"] span,
 [aria-current="true"] i {
-  color: #fff;
+  color: #ffffff;
 }
 .playlist-song-delete:hover,
 .playlist-song-delete:focus {
