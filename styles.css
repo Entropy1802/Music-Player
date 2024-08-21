@@ -18,10 +18,14 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  font-family: "Saira";
 }
 h1 {
   font-size: 40px;
+  font-family: "Merienda";
+}
+a {
+  text-decoration: none;
+  color: #fff;
 }
 button {
   border: none;
@@ -69,7 +73,6 @@ button {
   width: fit-content;
   background-color: transparent;
 }
-
 h2.playlist-title {
   font-size: 38px;
   color: #fff;
@@ -90,37 +93,34 @@ h2.playlist-title {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
-  padding: 15px 20px;
+  padding: 0 20px;
   height: 250px;
   width: 100%;
   border-radius: 6px;
   justify-content: space-between;
-}
-.top-button {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 35px;
+  border: 2px solid rgb(255, 255, 255);
 }
 .volume {
   display: flex;
   align-items: center;
+  border: 2px solid orange;
 }
 .volume p {
   font-size: 22px;
-  font-size: "Solway";
+  font-family: "Ubuntu";
   width: 40px;
   text-align: left;
   color: #fff;
   margin-right: 8px;
 }
-.top-button .volume i {
+.volume i {
   font-size: 30px;
   color: #fff;
 }
 input#volume {
   accent-color: #fff;
   margin-left: 15px;
+  cursor: pointer;
 }
 #mute-icon {
   display: none;
@@ -130,22 +130,20 @@ input#volume {
   flex-direction: column;
   justify-content: flex-start;
   row-gap: 5px;
-}
-#player-song-title,
-#player-song-artist {
-  color: #fff;
-  font-family: "Saira";
+  border: 2px solid rgb(19, 182, 155);
 }
 #player-song-title {
   width: 100%;
   text-align: left;
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 600;
+  font-family: "Hind Vadodara";
+  color: #fff;
 }
 #player-song-artist {
   width: 100%;
-  font-size: 18px;
-  font-family: "Merienda";
+  font-size: 20px;
+  font-family: "Karla";
   font-weight: 600;
   color: #fff;
 }
@@ -153,15 +151,17 @@ input#volume {
   display: flex;
   align-items: center;
   column-gap: 15px;
-  margin-bottom: 12px;
+  border: 2px solid orange;
 }
 .song-track span {
   color: #fff;
   font-size: 20px;
+  font-family: "Ubuntu";
 }
 input#songProgress {
   accent-color: #fff;
   width: 100%;
+  cursor: pointer;
 }
 .player-buttons {
   display: flex;
