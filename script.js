@@ -153,7 +153,6 @@ const allSongs = [
 ];
 
 const audio = new Audio(); // Creates and returns a new HTMLAudioElement object, optionally starting the process of loading an audio file into it if the file URL is given
-audio.volume = 15 / 100;
 
 let userData = {
   songs: [...allSongs],
@@ -197,11 +196,16 @@ const setPlayButtonAccessibleText = () => {
   playButton.setAttribute("aria-label", song?.title ? `Play ${song.title}` : "Play");
 };
 
-// Voume Adjustment
+// Volume Adjustment
+audio.volume = 15 / 100;
+let previousVolume = audio.volume;
+
 const muteSound = () => {
-  audio.volume = 0;
+  audio.volume = previousVolume;
   showVolume.textContent = 0;
   currentVolume.value = 0;
+  audio.volume = 0;
+
   volumeOn.style.display = "none";
   volumeOff.style.display = "block";
 };
@@ -209,6 +213,8 @@ const muteSound = () => {
 const changeVolume = () => {
   showVolume.textContent = currentVolume.value;
   audio.volume = currentVolume.value / 100;
+  previousVolume = audio.volume;
+
   volumeOn.style.display = "block";
   volumeOff.style.display = "none";
 
@@ -222,8 +228,10 @@ volumeOn.addEventListener("click", muteSound);
 volumeOff.addEventListener("click", () => {
   volumeOn.style.display = "block";
   volumeOff.style.display = "none";
-  audio.volume = currentVolume.value;
-  showVolume.textContent = audio.volume;
+
+  audio.volume = previousVolume;
+  currentVolume.value = audio.volume * 100;
+  showVolume.textContent = currentVolume.value;
 });
 currentVolume.addEventListener("change", changeVolume);
 
