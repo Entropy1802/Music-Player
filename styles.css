@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Acme&family=Brawler:wght@400;700&family=Doppio+One&family=Hind+Vadodara:wght@300;400;500;600;700&family=Karla:ital,wght@0,200..800;1,200..800&family=Merienda:wght@300..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Play:wght@400;700&family=Playpen+Sans:wght@100..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Doppio+One&family=Hind+Vadodara:wght@300;400;500;600;700&family=Karla:ital,wght@0,200..800;1,200..800&family=Merienda:wght@300..900&family=Nanum+Gothic+Coding:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Play:wght@400;700&family=Playpen+Sans:wght@100..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
 :root {
   --nav-color: rgb(0, 0, 0, 0.7);
@@ -26,6 +26,9 @@ h1 {
 a {
   text-decoration: none;
   color: #fff;
+}
+ul {
+  margin: 0;
 }
 button {
   border: none;
@@ -98,12 +101,10 @@ h2.playlist-title {
   width: 100%;
   border-radius: 6px;
   justify-content: space-between;
-  border: 2px solid rgb(255, 255, 255);
 }
 .volume {
   display: flex;
   align-items: center;
-  border: 2px solid orange;
 }
 .volume p {
   font-size: 22px;
@@ -116,42 +117,39 @@ h2.playlist-title {
 .volume i {
   font-size: 30px;
   color: #fff;
+  cursor: pointer;
 }
-input#volume {
+input#volume-adjust {
   accent-color: #fff;
   margin-left: 15px;
   cursor: pointer;
 }
-#mute-icon {
+.volume-off {
   display: none;
 }
 .player-display-song-artist {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  row-gap: 5px;
-  border: 2px solid rgb(19, 182, 155);
+  margin-top: -10px;
 }
 #player-song-title {
   width: 100%;
   text-align: left;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
-  font-family: "Hind Vadodara";
+  font-family: "Playpen Sans";
   color: #fff;
+  margin-bottom: 5px;
 }
 #player-song-artist {
   width: 100%;
-  font-size: 20px;
-  font-family: "Karla";
-  font-weight: 600;
+  font-size: 18px;
+  font-family: "Merienda";
+  font-weight: 500;
   color: #fff;
 }
 .song-track {
   display: flex;
   align-items: center;
   column-gap: 15px;
-  border: 2px solid orange;
 }
 .song-track span {
   color: #fff;
@@ -167,18 +165,16 @@ input#songProgress {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid rgb(19, 182, 155);
+  border: 2px solid orange;
 }
-.player-buttons button {
-  border: 2px solid rgb(255, 255, 255);
-}
-.player-buttons button:hover {
-  background-color: #a7a7a752;
-  padding: 8px 14px;
-  border-radius: 10px;
-}
-.player-buttons i {
+.player-buttons i:not(.play i, .pause i) {
   font-size: 35px;
+  width: 50px;
+  color: #e7e7e7;
+  border: 2px solid white;
+}
+.player-buttons i:hover:not(.play i, .pause i) {
+  font-size: 40px;
   color: #fff;
 }
 .play,
@@ -186,23 +182,23 @@ input#songProgress {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: #a7a7a7;
+  background-color: #fff;
 }
 .play i,
 .pause i {
-  color: darkgreen;
+  font-size: 35px;
+  color: #4a4a4a;
+}
+.play i {
+  margin-left: 5px;
 }
 #pause {
   display: none;
 }
-button.repeat {
-  color: #fff;
-}
-i#repeat-1 {
+.repeat-1 {
   display: none;
-}
-ul {
-  margin: 0;
+  color: #fff;
+  font-size: 40px;
 }
 #playlist-songs {
   list-style: none;

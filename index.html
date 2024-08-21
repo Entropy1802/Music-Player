@@ -33,9 +33,14 @@
         <div class="player-display">
           <div class="volume">
             <p id="show-volume">15</p>
-            <i class="fa-solid fa-volume-low" id="volume-icon"></i>
-            <i class="fa-solid fa-volume-mute" id="mute-icon"></i>
-            <input type="range" id="volume" min="0" max="100" value="15" />
+
+            <button class="volume-on" id="volume-on">
+              <i class="fa-solid fa-volume-low"></i>
+            </button>
+
+            <button class="volume-off" id="volume-off"><i class="fa-solid fa-volume-mute"></i></button>
+
+            <input type="range" id="volume-adjust" min="0" max="100" value="15" />
           </div>
 
           <div class="player-display-song-artist">
@@ -70,9 +75,12 @@
               <i class="fa-solid fa-forward-step"></i>
             </button>
 
-            <button class="repeat" id="repeat" aria-label="Repeat">
-              <i class="bi bi-repeat" id="repeat-0"></i>
-              <i class="bi bi-repeat-1" id="repeat-1"></i>
+            <button class="repeat-0" id="repeat-0" aria-label="Not Repeat">
+              <i class="bi bi-repeat"></i>
+            </button>
+
+            <button class="repeat-1" id="repeat-1" aria-label="Repeat">
+              <i class="bi bi-repeat-1"></i>
             </button>
           </div>
         </div>

@@ -8,9 +8,9 @@ const repeatButton = document.getElementById("repeat-0");
 const startRepeatButton = document.getElementById("repeat-1");
 
 const showVolume = document.getElementById("show-volume");
-const volumeIcon = document.getElementById("volume-icon");
-const muteIcon = document.getElementById("mute-icon");
-const currentVolume = document.getElementById("volume");
+const volumeOn = document.getElementById("volume-on");
+const volumeOff = document.getElementById("volume-off");
+const currentVolume = document.getElementById("volume-adjust");
 
 const progressBar = document.getElementById("songProgress");
 const currentTimeDisplay = document.getElementById("currentTime");
@@ -202,23 +202,29 @@ const muteSound = () => {
   audio.volume = 0;
   showVolume.textContent = 0;
   currentVolume.value = 0;
-  volumeIcon.style.display = "none";
-  muteIcon.style.display = "block";
+  volumeOn.style.display = "none";
+  volumeOff.style.display = "block";
 };
 
 const changeVolume = () => {
   showVolume.textContent = currentVolume.value;
   audio.volume = currentVolume.value / 100;
-  volumeIcon.style.display = "block";
-  muteIcon.style.display = "none";
+  volumeOn.style.display = "block";
+  volumeOff.style.display = "none";
 
   if (currentVolume.value == 0) {
-    volumeIcon.style.display = "none";
-    muteIcon.style.display = "block";
+    volumeOn.style.display = "none";
+    volumeOff.style.display = "block";
   }
 };
 
-volumeIcon.addEventListener("click", muteSound);
+volumeOn.addEventListener("click", muteSound);
+volumeOff.addEventListener("click", () => {
+  volumeOn.style.display = "block";
+  volumeOff.style.display = "none";
+  audio.volume = currentVolume.value;
+  showVolume.textContent = audio.volume;
+});
 currentVolume.addEventListener("change", changeVolume);
 
 /*------- FUNCTIONS -------*/
