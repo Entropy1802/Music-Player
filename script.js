@@ -122,6 +122,34 @@ const allSongs = [
     duration: "4:14",
     src: "resources/Giữ - An Lạc Hiền.mp3",
   },
+  {
+    id: 15,
+    title: "I Have a Lover",
+    artist: "Lee Eun Mi",
+    duration: "4:06",
+    src: "resources/I Have a Lover - Lee Eun Mi.mp3",
+  },
+  {
+    id: 16,
+    title: "Used to",
+    artist: "Wren Evans",
+    duration: "3:11",
+    src: "resources/Từng Quen-Wren Evans.mp3",
+  },
+  {
+    id: 17,
+    title: "Remember",
+    artist: "Vu ft TRANG",
+    duration: "4:36",
+    src: "resources/Anh Nhớ Ra - Vũ., TRANG.mp3",
+  },
+  {
+    id: 18,
+    title: "Muse",
+    artist: "Hoang Dung",
+    duration: "4:14",
+    src: "resources/Nàng Thơ - Hoàng Dũng.mp3",
+  },
 ];
 
 const audio = new Audio(); // Creates and returns a new HTMLAudioElement object, optionally starting the process of loading an audio file into it if the file URL is given
