@@ -50,10 +50,14 @@ button {
   align-items: center;
   column-gap: 15px;
 }
+.function-icon i {
+  font-size: 35px;
+  color: #fff;
+}
 .title i {
   font-size: 25px;
 }
-.nav-icon i {
+.link-icon i {
   font-size: 35px;
 }
 .container {
@@ -69,25 +73,46 @@ button {
   border-radius: 12px;
   background-color: #f6f6f61b;
 }
-.playlist-content {
-  margin: 40px auto;
-  padding: 20px;
-  border-radius: 12px;
-  width: fit-content;
-  background-color: transparent;
+.hidden {
+  display: none;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
 }
-h2.playlist-title {
-  font-size: 38px;
-  color: #fff;
-  font-family: "Play";
-  text-align: center;
+.container.show {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.player-content.show {
+  width: 650px;
+  margin: 0;
+  transition: width 2s ease-in-out;
+}
+.playlist-content.show {
+  width: 500px;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: #f6f6f61b;
+}
+#playlist-songs {
+  list-style: none;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  visibility: visible;
+  background-color: transparent;
 }
 #player-album-art {
   margin-right: 30px;
 }
 #player-album-art img {
-  width: 250px;
-  height: 250px;
+  width: 240px;
+  height: 240px;
   display: block;
   border-radius: 50%;
   box-shadow: 15px 0px 30px #c7c7c7;
@@ -102,6 +127,7 @@ h2.playlist-title {
   border-radius: 6px;
   justify-content: space-between;
 }
+
 .volume {
   display: flex;
   align-items: center;
@@ -201,20 +227,27 @@ input#songProgress {
   color: #fff;
   font-size: 40px;
 }
-#playlist-songs {
-  list-style: none;
-  height: 700px;
-  overflow-y: scroll;
-  width: 660px;
+.playlist-bar {
   display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-  justify-content: flex-start;
-  visibility: visible;
-  padding: 20px;
-  background-color: transparent;
-  border: 2px solid white;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+}
+h2.playlist-title {
+  font-size: 35px;
+  color: #fff;
+  font-family: "Playpen Sans";
+  text-align: center;
+}
+.playlist-bar i {
+  color: #fff;
+  font-size: 35px;
+}
+.playlist-bar button {
+  width: 50px;
+  height: 50px;
   border-radius: 10px;
+  background: #c7c7c7;
 }
 .playlist-song {
   outline-color: darkorange;
@@ -254,7 +287,7 @@ input#songProgress {
   font-size: 25px;
 }
 #playlist-songs li:not([aria-current="true"]):hover {
-  background-color: #bebebe;
+  background-color: #bebebe94;
   border-radius: 6px;
 }
 [aria-current="true"] {

@@ -12,12 +12,18 @@
 
   <body>
     <nav class="nav-top">
+      <div class="function-icon">
+        <button class="open-playlist-btn" id="open-playlist-btn">
+          <i class="fa-solid fa-snowflake"></i>
+        </button>
+      </div>
+
       <div class="title">
         <h1>Aurora</h1>
         <i class="fa-solid fa-mug-hot"></i>
       </div>
 
-      <div class="nav-icon">
+      <div class="link-icon">
         <a href="https://github.com/EntropyAurr" target="_blank">
           <i class="fa-brands fa-github"></i>
         </a>
@@ -86,8 +92,11 @@
         </div>
       </div>
 
-      <div class="playlist-content">
-        <h2 class="playlist-title" id="playlist">Playlist</h2>
+      <div class="playlist-content hidden">
+        <div class="playlist-bar">
+          <h2 class="playlist-title" id="playlist">Playlist</h2>
+          <button class="add-song" id="add-song"><i class="fa-solid fa-plus"></i></button>
+        </div>
 
         <ul id="playlist-songs"></ul>
       </div>
