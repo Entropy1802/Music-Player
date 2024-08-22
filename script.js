@@ -20,13 +20,18 @@ const container = document.querySelector(".container");
 const playerContent = document.querySelector(".player-content");
 const playlistContent = document.querySelector(".playlist-content");
 const openPlaylistButton = document.getElementById("open-playlist-btn");
+const playlistTitle = document.querySelector(".playlist-title");
+const displaySong = document.querySelector(".playlist-song");
 
 openPlaylistButton.addEventListener("click", () => {
   playlistContent.classList.toggle("hidden");
+  playlistTitle.classList.toggle("hidden");
 
   container.classList.toggle("show");
   playerContent.classList.toggle("show");
   playlistContent.classList.toggle("show");
+  playlistSongs.classList.toggle("show");
+  displaySong.classList.toggle("show");
 });
 
 const allSongs = [

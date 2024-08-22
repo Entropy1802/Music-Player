@@ -12,12 +12,6 @@
 
   <body>
     <nav class="nav-top">
-      <div class="function-icon">
-        <button class="open-playlist-btn" id="open-playlist-btn">
-          <i class="fa-solid fa-snowflake"></i>
-        </button>
-      </div>
-
       <div class="title">
         <h1>Aurora</h1>
         <i class="fa-solid fa-mug-hot"></i>
@@ -37,16 +31,24 @@
         </div>
 
         <div class="player-display">
-          <div class="volume">
-            <p id="show-volume">15</p>
+          <div class="top-button">
+            <div class="volume">
+              <p id="show-volume">15</p>
 
-            <button class="volume-on" id="volume-on">
-              <i class="fa-solid fa-volume-low"></i>
-            </button>
+              <button class="volume-on" id="volume-on">
+                <i class="fa-solid fa-volume-low"></i>
+              </button>
 
-            <button class="volume-off" id="volume-off"><i class="fa-solid fa-volume-mute"></i></button>
+              <button class="volume-off" id="volume-off"><i class="fa-solid fa-volume-mute"></i></button>
 
-            <input type="range" id="volume-adjust" min="0" max="100" value="15" />
+              <input type="range" id="volume-adjust" min="0" max="100" value="15" />
+            </div>
+
+            <div class="function-icon">
+              <button class="open-playlist-btn" id="open-playlist-btn">
+                <i class="fa-solid fa-snowflake"></i>
+              </button>
+            </div>
           </div>
 
           <div class="player-display-song-artist">
@@ -93,12 +95,9 @@
       </div>
 
       <div class="playlist-content hidden">
-        <div class="playlist-bar">
-          <h2 class="playlist-title" id="playlist">Playlist</h2>
-          <button class="add-song" id="add-song"><i class="fa-solid fa-plus"></i></button>
-        </div>
+        <h2 class="playlist-title hidden" id="playlist">Playlist</h2>
 
-        <ul id="playlist-songs"></ul>
+        <ul id="playlist-songs" class="hidden"></ul>
       </div>
     </div>
 
