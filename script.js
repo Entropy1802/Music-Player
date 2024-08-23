@@ -65,10 +65,10 @@ const allSongs = [
   },
   {
     id: 4,
-    title: "A World Without Pain",
-    artist: "Khiem",
-    duration: "4:19",
-    src: "resources/Thế Giới Không Còn Niềm Đau - Khiem.mp3",
+    title: "No More Waiting",
+    artist: "Khai",
+    duration: "4:11",
+    src: "resources/Không chờ đợi nữa - Khải, ft. LilGee.mp3",
   },
   {
     id: 5,
@@ -273,8 +273,17 @@ const playSong = (id) => {
   setPlayerDisplay();
   audio.play();
 
+  audio.addEventListener("ended", handleSongEnd);
+
   playButton.style.display = "none";
   pauseButton.style.display = "block";
+};
+
+const handleSongEnd = () => {
+  const currentSongIndex = getCurrentSongIndex();
+  if (currentSongIndex === userData.songs.length - 1) {
+    playPreviousSong();
+  }
 };
 
 // Shuffle Playlist
@@ -368,15 +377,18 @@ const playNextSong = () => {
 
 // Previous Song
 const playPreviousSong = () => {
-  if (userData?.currentSong === null) {
-    return;
-  } else {
-    const currentSongIndex = getCurrentSongIndex();
+  const currentSongIndex = getCurrentSongIndex();
+  const playlistLength = userData.songs.length;
+
+  if (currentSongIndex > 0) {
     const previousSong = userData?.songs[currentSongIndex - 1];
     playSong(previousSong.id);
+  } else if (currentSongIndex == -1) {
+    playSong(userData.songs[playlistLength - 2].id);
+  } else {
+    return;
   }
 };
-
 // Song's Display
 const setPlayerDisplay = () => {
   const playingSong = document.getElementById("player-song-title");
