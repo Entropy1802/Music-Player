@@ -114,10 +114,10 @@ const allSongs = [
   },
   {
     id: 11,
-    title: "Hidden in the Snow",
-    artist: "YD ft DDP",
-    duration: "3:32",
-    src: "resources/Tuyêt tang - Y-D, Ngai Ngai Pha.mp3",
+    title: "Rain",
+    artist: "Thuy Chi ft M4U",
+    duration: "4:37",
+    src: "resources/Mưa - M4U, Thùy Chi.mp3",
   },
   {
     id: 12,
@@ -142,10 +142,10 @@ const allSongs = [
   },
   {
     id: 15,
-    title: "I Have a Lover",
-    artist: "Lee Eun Mi",
-    duration: "4:06",
-    src: "resources/I Have a Lover - Lee Eun Mi.mp3",
+    title: "The New Ending",
+    artist: "Hoang Dung",
+    duration: "4:54",
+    src: "resources/Đoạn Kết Mới - Hoàng Dũng.mp3",
   },
   {
     id: 16,
@@ -273,17 +273,8 @@ const playSong = (id) => {
   setPlayerDisplay();
   audio.play();
 
-  audio.addEventListener("ended", handleSongEnd);
-
   playButton.style.display = "none";
   pauseButton.style.display = "block";
-};
-
-const handleSongEnd = () => {
-  const currentSongIndex = getCurrentSongIndex();
-  if (currentSongIndex === userData.songs.length - 1) {
-    playPreviousSong();
-  }
 };
 
 // Shuffle Playlist
@@ -310,9 +301,11 @@ audio.addEventListener("ended", () => {
   if (nextSongExists) {
     playNextSong();
   } else {
-    userData.currentSong = null;
     userData.songCurrentTime = 0;
-    pauseSong();
+
+    pauseButton.style.display = "none";
+    playButton.style.display = "block";
+
     setPlayerDisplay();
     highlightCurrentSong();
     setPlayButtonAccessibleText();
@@ -376,19 +369,19 @@ const playNextSong = () => {
 };
 
 // Previous Song
+const playlistLength = userData.songs.length;
+
 const playPreviousSong = () => {
   const currentSongIndex = getCurrentSongIndex();
-  const playlistLength = userData.songs.length;
 
   if (currentSongIndex > 0) {
     const previousSong = userData?.songs[currentSongIndex - 1];
     playSong(previousSong.id);
-  } else if (currentSongIndex == -1) {
-    playSong(userData.songs[playlistLength - 2].id);
   } else {
     return;
   }
 };
+
 // Song's Display
 const setPlayerDisplay = () => {
   const playingSong = document.getElementById("player-song-title");
@@ -480,7 +473,13 @@ pauseButton.addEventListener("click", () => {
 nextButton.addEventListener("click", playNextSong);
 
 // Previous Button
-previousButton.addEventListener("click", playPreviousSong);
+previousButton.addEventListener("click", () => {
+  if (audio.ended && userData?.currentSong.id === userData?.songs[playlistLength - 1].id) {
+    playSong(userData.songs[playlistLength - 2].id);
+  } else {
+    playPreviousSong();
+  }
+});
 
 // Shuffle Button
 shuffleButton.addEventListener("click", shuffle);
