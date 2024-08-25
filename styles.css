@@ -53,10 +53,6 @@ button {
   align-items: center;
   column-gap: 15px;
 }
-.function-icon i {
-  font-size: 35px;
-  color: #fff;
-}
 .title i {
   font-size: 25px;
 }
@@ -65,13 +61,9 @@ button {
 }
 .container {
   margin: 30px;
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: flex-start;
-  justify-content: space-between;
 }
 .player-content {
-  margin: 0 auto;
+  margin: 60px auto;
   width: 900px;
   display: flex;
   align-items: center;
@@ -79,38 +71,33 @@ button {
   padding: 40px;
   border-radius: 12px;
   background-color: #f6f6f61b;
+  transition: width 0.8s;
 }
 .hidden {
   max-height: 0;
-  transition: max-height 1s;
+  overflow: hidden;
 }
-h2.hidden {
-  display: none;
+.container.show {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 .player-content.show {
   width: 700px;
   margin: 0;
-  transition: width 0.5s ease-in-out;
+  transition: width 0.8s;
 }
 .playlist-content.show {
+  max-height: 500px;
+  overflow: hidden;
   width: 500px;
   padding: 0 0 20px 15px;
   border-radius: 12px;
   background-color: var(--nav-color);
-  transition: max-height 0.8s;
-}
-li.playlist-song {
-  display: none;
-}
-li.playlist-song.show {
-  width: 500px;
-  height: 500px;
-  background-color: darkorange;
+  transition: max-height 1.5s;
 }
 #playlist-songs {
-  background-color: darkorange;
-}
-#playlist-songs.show {
   max-height: 340px;
   color: #fff;
   list-style: none;
@@ -120,9 +107,7 @@ li.playlist-song.show {
   justify-content: flex-start;
   overflow-y: scroll;
   visibility: visible;
-  background-color: darkolivegreen;
   scrollbar-width: thin;
-  transition: max-height 0.8s;
 }
 #player-album-art {
   margin-right: 30px;
@@ -172,6 +157,13 @@ input#volume-adjust {
 }
 .volume-off {
   display: none;
+}
+.open-playlist-btn i {
+  font-size: 35px;
+  color: #e7e7e7;
+}
+.open-playlist-btn i:hover {
+  color: #fff;
 }
 .player-display-song-artist {
   margin-top: -10px;
