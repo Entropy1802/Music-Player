@@ -73,42 +73,6 @@ button {
   background-color: #f6f6f61b;
   transition: width 0.8s;
 }
-.hidden {
-  max-height: 0;
-  overflow: hidden;
-}
-.container.show {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-.player-content.show {
-  width: 700px;
-  margin: 0;
-  transition: width 0.8s;
-}
-.playlist-content.show {
-  max-height: 500px;
-  overflow: hidden;
-  width: 500px;
-  padding: 0 0 20px 15px;
-  border-radius: 12px;
-  background-color: var(--nav-color);
-  transition: max-height 1.5s;
-}
-#playlist-songs {
-  max-height: 340px;
-  color: #fff;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-  justify-content: flex-start;
-  overflow-y: scroll;
-  visibility: visible;
-  scrollbar-width: thin;
-}
 #player-album-art {
   margin-right: 30px;
 }
@@ -173,14 +137,14 @@ input#volume-adjust {
   text-align: left;
   font-size: 24px;
   font-weight: 600;
-  font-family: "Playpen Sans";
+  font-family: "Hind Vadodara";
   color: #fff;
   margin-bottom: 5px;
 }
 #player-song-artist {
   width: 100%;
   font-size: 18px;
-  font-family: "Merienda";
+  font-family: "Playpen Sans";
   font-weight: 500;
   color: #fff;
 }
@@ -240,23 +204,69 @@ input#songProgress {
   font-size: 40px;
 }
 .playlist-title {
-  padding-bottom: 5px;
+  padding: 7px 0 12px;
   margin-bottom: 10px;
   margin-left: -15px;
   box-shadow: 5px 5px 15px #283d45;
 }
 h2.playlist-title {
-  font-size: 30px;
+  font-size: 28px;
   color: #fff;
-  font-family: "Playpen Sans";
+  font-family: "Play";
   text-align: center;
+}
+.hidden {
+  max-height: 0;
+  overflow: hidden;
+}
+.container.show {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.player-content.show {
+  width: 700px;
+  margin: 0;
+  transition: width 0.8s;
+}
+.player-content.show #player-album-art img {
+  width: 215px;
+  height: 215px;
+}
+.player-content.show #player-song-title {
+  font-size: 23px;
+}
+.player-content.show #player-song-artist {
+  font-size: 17px;
+}
+.playlist-content.show {
+  max-height: 500px;
+  overflow: hidden;
+  width: 500px;
+  padding: 0 0 20px 15px;
+  border-radius: 12px;
+  background-color: var(--nav-color);
+  transition: max-height 1.5s;
+}
+#playlist-songs {
+  max-height: 340px;
+  color: #fff;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  visibility: visible;
+  scrollbar-width: thin;
 }
 .playlist-song {
   height: 55px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30px 10px;
+  padding: 30px 20px 30px 10px;
 }
 .playlist-song-info {
   height: 100%;

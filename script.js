@@ -53,10 +53,10 @@ const allSongs = [
   },
   {
     id: 3,
-    title: "Cannot Give Up on You",
-    artist: "Khiem",
-    duration: "4:17",
-    src: "resources/Chẳng Thể Từ Bỏ - Khiem.mp3",
+    title: "Throw the Love Into the Air",
+    artist: "Hoang Dung",
+    duration: "3:56",
+    src: "resources/Ném Câu Yêu Vào Không Trung - Hoàng Dũng.mp3",
   },
   {
     id: 4,
@@ -67,10 +67,10 @@ const allSongs = [
   },
   {
     id: 5,
-    title: "The Other Half is Loneliness",
-    artist: "Khiem",
-    duration: "1:00",
-    src: "resources/Demo Nửa kia là quạnh hiu-Khiem.mp3",
+    title: "Still Missing You",
+    artist: "Da Lang",
+    duration: "3:12",
+    src: "resources/Vẫn Sẽ Nhớ Em - Lâm Đạt Lãng.mp3",
   },
   {
     id: 6,
