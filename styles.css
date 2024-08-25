@@ -328,6 +328,40 @@ button#reset {
 }
 
 /*------- RESPONSIVE WEB PAGE -------*/
+/*----- IPAD Viewport-768px -----*/
+@media screen and (max-width: 800px) {
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .player-content {
+    width: 700px;
+  }
+  .container.show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .player-content.show {
+    margin-bottom: 20px;
+  }
+  .playlist-content.show {
+    width: 700px;
+  }
+  .playlist-song {
+    margin-right: 15px;
+  }
+  .playlist-song-title {
+    width: 350px;
+    margin-right: 20px;
+  }
+  .playlist-song-artist {
+    width: 140px;
+    margin-right: 10px;
+  }
+}
+
+/*----- Phone Viewport-375px -----*/
 @media screen and (max-width: 400px) {
   .player,
   .playlist {
