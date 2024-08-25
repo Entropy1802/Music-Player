@@ -266,7 +266,8 @@ h2.playlist-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30px 20px 30px 10px;
+  padding: 30px 10px;
+  margin-right: 10px;
 }
 .playlist-song-info {
   height: 100%;
@@ -299,11 +300,11 @@ h2.playlist-title {
   font-size: 22px;
 }
 #playlist-songs li:not([aria-current="true"]):hover {
-  background-color: #bebebe94;
+  background-color: #cfcfcf55;
   border-radius: 6px;
 }
 [aria-current="true"] {
-  background-color: #757474;
+  background-color: #cfcfcf55;
   border-radius: 6px;
 }
 [aria-current="true"] {
@@ -315,7 +316,7 @@ h2.playlist-title {
 }
 .playlist-song-delete:hover,
 .playlist-song-delete:focus {
-  color: #dc0a57;
+  color: #5d0008;
 }
 button#reset {
   font-size: 18px;
