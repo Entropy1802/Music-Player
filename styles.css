@@ -363,7 +363,7 @@ button#reset {
 }
 
 /*----- Phone Viewport-375px -----*/
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   body {
     background-image: url("img/phone-cover.jpg");
     background-repeat: no-repeat;
@@ -380,7 +380,7 @@ button#reset {
   .container {
     margin: 0;
     padding: 30px 0;
-    height: 602px;
+    height: 100vh;
   }
   .player-content {
     margin: auto 0;
