@@ -466,7 +466,6 @@ button#reset {
     border-radius: 0 0 12px 12px;
     background-color: var(--nav-color);
     box-shadow: 0 -4px 15px -4px #c7c7c7;
-    border: 2px solid salmon;
   }
   .playlist-content.show {
     order: 1;
