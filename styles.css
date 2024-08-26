@@ -402,8 +402,17 @@ button#reset {
     top: 0;
     left: 0;
     right: 0;
-    margin: 15px 0;
     padding: 0 20px;
+    margin-top: 10px;
+  }
+  .volume p {
+    font-size: 20px;
+  }
+  .volume i {
+    font-size: 25px;
+  }
+  .open-playlist-btn i {
+    font-size: 25px;
   }
   #player-album-art {
     margin: 70px auto 35px;
@@ -441,11 +450,15 @@ button#reset {
   #player-song-title {
     margin-bottom: 0;
   }
+  .container.show {
+    margin-bottom: 20px;
+  }
   .player-content.show {
     order: 2;
     padding: 20px 15px 0;
+    margin: -10px 0 20px;
     width: 100%;
-    height: 190px;
+    height: 180px;
     border-radius: 0 0 12px 12px;
     background-color: var(--nav-color);
     box-shadow: 0 -4px 15px -4px #c7c7c7;
@@ -453,7 +466,7 @@ button#reset {
   .playlist-content.show {
     order: 1;
     padding: 0;
-    margin-top: 70px;
+    margin-top: 50px;
     width: 100%;
     height: 410px;
     border-radius: 12px 12px 0 0;
@@ -486,8 +499,14 @@ button#reset {
   .player-content.show .player-display .player-buttons .play i {
     margin-left: 2px;
   }
+  .playlist-content.show .playlist-title {
+    padding: 7px 0 10px;
+  }
+  .playlist-content.show h2.playlist-title {
+    font-size: 22px;
+  }
   #playlist-songs {
-    padding: 10px;
+    padding: 0 10px 10px;
     overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-color: #3f3f3f white;
