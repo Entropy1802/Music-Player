@@ -19,10 +19,6 @@ body {
   background-attachment: fixed;
   background-size: cover;
 }
-h1 {
-  font-size: 40px;
-  font-family: "Merienda";
-}
 a {
   text-decoration: none;
   color: #fff;
@@ -48,10 +44,12 @@ button {
   justify-content: space-between;
   padding: 0 80px;
 }
-.nav-bar .title {
+.nav-bar .title a {
   display: flex;
   align-items: center;
   column-gap: 15px;
+  font-size: 40px;
+  font-family: "Merienda";
 }
 .title i {
   font-size: 25px;
@@ -381,7 +379,7 @@ button#reset {
   .nav-bar {
     padding: 10px 20px;
   }
-  .nav-bar h1 {
+  .nav-bar .title a {
     font-size: 30px;
   }
   .container {
