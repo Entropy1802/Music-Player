@@ -444,6 +444,7 @@ button#reset {
     font-size: 22px;
   }
   .player-buttons {
+    margin-bottom: -10px;
   }
   #playlist-songs {
     height: 400px;
