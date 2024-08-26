@@ -430,6 +430,7 @@ button#reset {
   }
   .player-display-song-artist > p {
     white-space: pre-wrap;
+    margin: 0;
   }
   #player-song-title,
   #player-song-artist {
@@ -443,7 +444,6 @@ button#reset {
     font-size: 22px;
   }
   .player-buttons {
-    margin-bottom: 10px;
   }
   #playlist-songs {
     height: 400px;
