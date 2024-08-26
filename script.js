@@ -32,7 +32,7 @@ openPlaylistButton.addEventListener("click", () => {
 const allSongs = [
   {
     id: 0,
-    title: "In the Years to Come, I Wish You Peace",
+    title: "Wishing You Peace",
     artist: "Linh",
     duration: "4:48",
     src: "resources/Năm Tháng Sau Này, Mong Người Bình Yên - Linh.mp3",
