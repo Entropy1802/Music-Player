@@ -441,6 +441,9 @@ button#reset {
   #player-song-artist {
     font-size: 22px;
   }
+  .player-buttons {
+    margin-bottom: 20px;
+  }
   #playlist-songs {
     height: 400px;
     padding: 10px;
