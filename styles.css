@@ -133,16 +133,16 @@ input#volume-adjust {
 #player-song-title {
   width: 100%;
   text-align: left;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 600;
-  font-family: "Hind Vadodara";
+  font-family: "Playpen Sans";
   color: #fff;
   margin-bottom: 5px;
 }
 #player-song-artist {
   width: 100%;
   font-size: 18px;
-  font-family: "Playpen Sans";
+  font-family: "Play";
   font-weight: 500;
   color: #fff;
 }
@@ -415,9 +415,9 @@ button#reset {
     font-size: 25px;
   }
   #player-album-art {
-    margin: 70px auto 35px;
-    width: 280px;
-    height: 280px;
+    margin: 50px auto 30px;
+    width: 300px;
+    height: 300px;
   }
   #player-album-art img {
     width: 100%;
@@ -432,6 +432,7 @@ button#reset {
     justify-content: space-between;
   }
   .player-display-song-artist {
+    margin-top: 10px;
     height: 110px;
     display: flex;
     flex-direction: column;
@@ -447,6 +448,9 @@ button#reset {
   #player-song-artist {
     text-align: center;
   }
+  #player-song-artist {
+    font-size: 24px;
+  }
   #player-song-title {
     margin-bottom: 0;
   }
@@ -455,8 +459,8 @@ button#reset {
   }
   .player-content.show {
     order: 2;
-    padding: 20px 15px 0;
-    margin: -10px 0 20px;
+    padding: 10px 15px 0;
+    margin: 0 0 20px;
     width: 100%;
     height: 180px;
     border-radius: 0 0 12px 12px;
@@ -479,9 +483,13 @@ button#reset {
   }
   .player-content.show .player-display .player-display-song-artist {
     height: 80px;
+    margin: 0;
   }
   .player-content.show .player-display .player-display-song-artist #player-song-title {
-    font-size: 20px;
+    font-size: 22px;
+  }
+  .player-content.show .player-display .player-display-song-artist #player-song-artist {
+    font-size: 18px;
   }
   .player-content.show .player-display .player-buttons i {
     font-size: 27px;
@@ -523,9 +531,6 @@ button#reset {
   }
   #playlist-songs::-webkit-scrollbar-thumb {
     background: #fff;
-  }
-  #playlist-songs::-webkit-scrollbar-thumb:hover {
-    background: #000;
   }
   .playlist-song-info {
     justify-content: space-between;
