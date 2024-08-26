@@ -405,8 +405,8 @@ button#reset {
   }
   #player-album-art {
     margin: 70px auto 35px;
-    width: 275px;
-    height: 275px;
+    width: 280px;
+    height: 280px;
   }
   #player-album-art img {
     width: 100%;
@@ -443,7 +443,7 @@ button#reset {
     font-size: 22px;
   }
   .player-buttons {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   #playlist-songs {
     height: 400px;
