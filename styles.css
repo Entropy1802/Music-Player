@@ -390,25 +390,25 @@ button#reset {
     height: calc(100vh - 80px);
     position: relative;
   }
+  .top-button {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    margin: 0 20px;
+  }
   .player-content {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 100%;
-    height: 90%;
-    padding: 10px 0;
+    height: 85%;
+    margin-top: 25%;
+    padding: 0;
     background-color: transparent;
-    border: 2px solid white;
-  }
-  .top-button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 30px 20px 0;
-    border: 2px solid yellow;
   }
   #player-album-art {
-    margin: 80px auto 0;
+    margin: 30px auto 0;
     width: 350px;
     height: 350px;
   }
@@ -426,12 +426,12 @@ button#reset {
     justify-content: space-between;
   }
   .player-display-song-artist {
-    margin-top: 10px;
-    height: 110px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: -40px;
+    height: 110px;
     row-gap: 10px;
   }
   .player-display-song-artist > p {
@@ -563,12 +563,16 @@ button#reset {
 
 /*----- Samsung Viewport-375px -----*/
 @media screen and (min-width: 310px) and (max-width: 400px) {
-  .player-content {
-    margin: 5% 0;
-    padding: 10px 0;
+  .container {
+    margin: 0;
+    padding: 0 20px;
   }
   .top-button {
-    margin: 10px 20px 0;
+    top: 10px;
+  }
+  .player-content {
+    height: 88%;
+    margin-top: 20%;
   }
   .volume p {
     font-size: 20px;
@@ -580,6 +584,7 @@ button#reset {
     font-size: 25px;
   }
   #player-album-art {
+    margin: 0 auto;
     width: 300px;
     height: 300px;
   }
@@ -587,27 +592,7 @@ button#reset {
     margin-top: 0;
   }
   .player-display-song-artist {
-    margin-top: 10px;
-    height: 110px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: 10px;
-  }
-  .player-display-song-artist > p {
-    white-space: pre-wrap;
-    margin: 0;
-  }
-  #player-song-title,
-  #player-song-artist {
-    text-align: center;
-  }
-  #player-song-artist {
-    font-size: 24px;
-  }
-  #player-song-title {
-    margin-bottom: 0;
+    margin-top: -10px;
   }
   .container.show {
     margin-bottom: 0px;
