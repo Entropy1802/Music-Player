@@ -123,10 +123,10 @@ const allSongs = [
   },
   {
     id: 13,
-    title: "Eternal Sleep",
-    artist: "Khiem",
-    duration: "3:19",
-    src: "resources/Khiem - Giấc Ngủ Dài Hạn.mp3",
+    title: "We're Just Like Love",
+    artist: "Hoang ft Will M",
+    duration: "5:06",
+    src: "resources/Chúng Ta Chỉ Giống Tình Yêu (Lofi Ver.) - Hoàng Green x Will M.mp3",
   },
   {
     id: 14,
@@ -162,6 +162,34 @@ const allSongs = [
     artist: "Hoang Dung",
     duration: "4:14",
     src: "resources/Nàng Thơ - Hoàng Dũng.mp3",
+  },
+  {
+    id: 19,
+    title: "Because You Live",
+    artist: "Jesse McCartney",
+    duration: "3:18",
+    src: "resources/Because You Live Jesse McCartney.mp3",
+  },
+  {
+    id: 20,
+    title: "Every Time We Touch",
+    artist: "Cascada",
+    duration: "3:15",
+    src: "resources/Every Time We Touch (Ballad) - Cascada.mp3",
+  },
+  {
+    id: 21,
+    title: "Right Here Waiting For You",
+    artist: "Richard Marx",
+    duration: "4:24",
+    src: "resources/Right Here Waiting For You - Richard Marx.mp3",
+  },
+  {
+    id: 22,
+    title: "Cry On My Shoulder ",
+    artist: "Super Stars",
+    duration: "3:55",
+    src: "resources/Cry On My Shoulder - Super Stars.mp3",
   },
 ];
 
