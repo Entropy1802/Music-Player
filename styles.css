@@ -556,10 +556,10 @@ button#reset {
     font-size: 14px;
   }
   .playlist-song-title {
-    width: 120px;
+    width: 170px;
   }
   .playlist-song-artist {
-    width: 60px;
+    width: 85px;
   }
   .playlist-song-duration {
     width: 40px;
@@ -633,5 +633,11 @@ button#reset {
   }
   #playlist-songs {
     height: 85%;
+  }
+  .playlist-song-title {
+    width: 120px;
+  }
+  .playlist-song-artist {
+    width: 60px;
   }
 }
