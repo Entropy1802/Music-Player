@@ -191,6 +191,20 @@ const allSongs = [
     duration: "3:55",
     src: "resources/Cry On My Shoulder - Super Stars.mp3",
   },
+  {
+    id: 23,
+    title: "Avid ",
+    artist: "Mizuki",
+    duration: "4:10",
+    src: "resources/Avid.mp3",
+  },
+  {
+    id: 24,
+    title: "I Hold You",
+    artist: "CLANN",
+    duration: "9:10",
+    src: "resources/I Hold You - CLANN.mp3",
+  },
 ];
 
 const audio = new Audio(); // Creates and returns a new HTMLAudioElement object, optionally starting the process of loading an audio file into it if the file URL is given
