@@ -39,10 +39,10 @@ const allSongs = [
   },
   {
     id: 1,
-    title: "Divorce in the Republic of Ghana",
-    artist: "ZB ft YK",
-    duration: "4:33",
-    src: "resources/Ly Hôn Ở Cộng Hòa Ghana - Trương Bích Thần (Zhang Bi Chen), Dương Khôn (Yang Kun).mp3",
+    title: "Lesion",
+    artist: "Xiao Yi Qing",
+    duration: "4:01",
+    src: "resources/Bệnh Biến – Tiêu Ức Tình.mp3",
   },
   {
     id: 2,
@@ -165,10 +165,10 @@ const allSongs = [
   },
   {
     id: 19,
-    title: "Because You Live",
-    artist: "Jesse McCartney",
-    duration: "3:18",
-    src: "resources/Because You Live Jesse McCartney.mp3",
+    title: "Her",
+    artist: "Sing",
+    duration: "4:22",
+    src: "resources/Cô Ấy - Sing x Freak D.mp3",
   },
   {
     id: 20,
@@ -200,14 +200,22 @@ const allSongs = [
   },
   {
     id: 24,
-    title: "I Hold You",
-    artist: "CLANN",
-    duration: "9:10",
-    src: "resources/I Hold You - CLANN.mp3",
+    title: "Fairy Tale",
+    artist: "Guang Liang",
+    duration: "4:06",
+    src: "resources/Đồng thoại -Quang Lương.mp3",
+  },
+  {
+    id: 25,
+    title: "Really Like You",
+    artist: "Gyubin",
+    duration: "2:58",
+    src: "resources/Really Like You-Gyubin.mp3",
   },
 ];
 
-const audio = new Audio(); // Creates and returns a new HTMLAudioElement object, optionally starting the process of loading an audio file into it if the file URL is given
+const audio = new Audio();
+// Creates and returns a new HTMLAudioElement object, optionally starting the process of loading an audio file into it if the file URL is given
 
 let userData = {
   songs: [...allSongs],
